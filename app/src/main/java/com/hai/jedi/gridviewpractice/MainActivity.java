@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import android.widget.TextView;
+//import android.widget.TextView;
 import android.widget.GridView;
+
+import android.graphics.Typeface;
 
 import java.lang.UnsatisfiedLinkError;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Typeface mTypeface = Typeface.createFromAsset(getAssets(), "fonts/lobster.otf");
 
         /**
          *  Example of a call to a native method
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         gridView = findViewById(R.id.exampleGridView);
 
         // Should return 'B' a couple of times for now base on the length of the letters array.
-        gridView.setAdapter(new AlphabetAdapter(this, letters));
+        gridView.setAdapter(new AlphabetAdapter(this, letters, mTypeface));
 
     }
 

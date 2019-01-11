@@ -9,13 +9,17 @@ import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import android.graphics.Typeface;
+
 public class AlphabetAdapter extends BaseAdapter {
     private Context mContext;
     private String[] mLetters;
+    private Typeface mTypeface;
 
-    public AlphabetAdapter(Context context, String[] letters){
+    public AlphabetAdapter(Context context, String[] letters, Typeface typeface){
         this.mContext = context;
         this.mLetters = letters;
+        this.mTypeface = typeface;
     }
 
     @Override
@@ -70,7 +74,8 @@ public class AlphabetAdapter extends BaseAdapter {
             // Pull views
             TextView letter_view = gridView.findViewById(R.id.grid_item_letter);
             // Set values to view.
-            letter_view.setText(mLetters[position]); // using dummy data for prof of concept
+            letter_view.setText(mLetters[position]); // using letter list data
+            letter_view.setTypeface(mTypeface);
 
         }else {
             gridView = convertView;
