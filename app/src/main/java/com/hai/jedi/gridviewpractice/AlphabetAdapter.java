@@ -14,6 +14,7 @@ import android.graphics.Typeface;
 public class AlphabetAdapter extends BaseAdapter {
     private Context mContext;
     private String[] mLetters;
+    // A custom adapter allows us to pass a font to our text through our constructor.
     private Typeface mTypeface;
 
     public AlphabetAdapter(Context context, String[] letters, Typeface typeface){
@@ -75,7 +76,7 @@ public class AlphabetAdapter extends BaseAdapter {
             TextView letter_view = gridView.findViewById(R.id.grid_item_letter);
             // Set values to view.
             letter_view.setText(mLetters[position]); // using letter list data
-            letter_view.setTypeface(mTypeface);
+            letter_view.setTypeface(mTypeface); // Setting font to every text
 
         }else {
             gridView = convertView;
