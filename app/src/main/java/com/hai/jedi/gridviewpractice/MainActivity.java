@@ -63,16 +63,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Should return 'B' a couple of times for now base on the length of the letters array.
         gridView.setAdapter(new AlphabetAdapter(this, letters, mTypeface));
 
-        // Adding our MoodDialogFragment to our activity
-        FragmentManager fragmentManager = getFragmentManager();
-        MoodDialogFragment moodDialogFragment = new MoodDialogFragment();
-        moodDialogFragment.show(fragmentManager, "Example Fragment");
+
 
     }
 
     @Override
     public void onClick(View v){
         if(v == welcome_text) {
+            // We navigate to the Dialog Activity.w
             Intent dialog_intent = new Intent(MainActivity.this, DialogActivity.class);
             startActivity(dialog_intent);
         }
