@@ -4,6 +4,8 @@ import android.util.Log;
 
 import android.support.v7.app.AppCompatActivity;
 
+import android.app.FragmentManager;
+
 import android.os.Bundle;
 
 //import android.widget.TextView;
@@ -50,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Should return 'B' a couple of times for now base on the length of the letters array.
         gridView.setAdapter(new AlphabetAdapter(this, letters, mTypeface));
+
+        // Adding our MoodDialogFragment to our activity
+        FragmentManager fragmentManager = getFragmentManager();
+        MoodDialogFragment moodDialogFragment = new MoodDialogFragment();
+        moodDialogFragment.show(fragmentManager, "Example Fragment");
 
     }
 
