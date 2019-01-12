@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GridViewPractice</string>
+    <string name="welcome_txt">Hello World! Dialog activity here.</string>
 </resources>

@@ -2,20 +2,27 @@ package com.hai.jedi.gridviewpractice;
 
 import android.util.Log;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.FragmentManager;
 
 import android.os.Bundle;
 
-//import android.widget.TextView;
+import android.view.View;
+
+import android.content.Intent;
+
 import android.widget.GridView;
+import android.widget.TextView;
 
 import android.graphics.Typeface;
 
 import java.lang.UnsatisfiedLinkError;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Used to load the 'native-lib' library on application startup.
     protected void loadNativeLibraries(){
@@ -29,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    GridView gridView;
+    @BindView(R.id.exampleGridView) GridView gridView;
+    @BindView(R.id.sample_text) TextView welcome_text;
 
     String[] letters = new String[] {
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
@@ -42,14 +50,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Typeface mTypeface = Typeface.createFromAsset(getAssets(), "fonts/lobster.otf");
 
+        ButterKnife.bind(this);
+
         /**
          *  Example of a call to a native method
          *  TextView tv = (TextView) findViewById(R.id.sample_text);
          *  tv.setText(stringFromJNI()); String from 'native-lib'
          * */
 
-        gridView = findViewById(R.id.exampleGridView);
-
+        //Setting onClickListener to welcome text to lead us to Dialog Activity
+        welcome_text.setOnClickListener(this);
         // Should return 'B' a couple of times for now base on the length of the letters array.
         gridView.setAdapter(new AlphabetAdapter(this, letters, mTypeface));
 
@@ -58,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         MoodDialogFragment moodDialogFragment = new MoodDialogFragment();
         moodDialogFragment.show(fragmentManager, "Example Fragment");
 
+    }
+
+    @Override
+    public void onClick(View v){
+        if(v == welcome_text) {
+            Intent dialog_intent = new Intent(MainActivity.this, DialogActivity.class);
+            startActivity(dialog_intent);
+        }
     }
 
     /**
