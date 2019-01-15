@@ -51,7 +51,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Okay"
-                android:checked="true"
                 android:id="@+id/radioButton3"/>
 
             <RadioButton
